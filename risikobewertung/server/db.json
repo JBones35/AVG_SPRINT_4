@@ -1,0 +1,52 @@
+{
+  "risikoBewertungen": [
+    {
+      "antragsId": "antrag-001",
+      "risikoScoreGesamt": 180,
+      "risikoKategorie": "SEHR_GERING",
+      "kapitaldienstfaehigkeitQuote": 0.65,
+      "verschuldungsgrad": 0.30,
+      "sicherheitenBewertung": "AUSGEZEICHNET",
+      "zinssatzEmpfehlungBasispunkte": -25,
+      "maxKreditvolumenFaktor": 5.0,
+      "simulationsKonfidenz": "HOCH",
+      "bemerkung": "Exzellentes Risikoprofil, Top-Konditionen möglich."
+    },
+    {
+      "antragsId": "antrag-004",
+      "risikoScoreGesamt": 550,
+      "risikoKategorie": "MITTEL",
+      "kapitaldienstfaehigkeitQuote": 0.40,
+      "verschuldungsgrad": 0.60,
+      "sicherheitenBewertung": "STANDARD",
+      "zinssatzEmpfehlungBasispunkte": 50,
+      "maxKreditvolumenFaktor": 3.0,
+      "simulationsKonfidenz": "MITTEL",
+      "bemerkung": "Standardrisiko, Konditionen im mittleren Bereich."
+    },
+    {
+      "antragsId": "antrag-007",
+      "risikoScoreGesamt": 780,
+      "risikoKategorie": "HOCH",
+      "kapitaldienstfaehigkeitQuote": 0.25,
+      "verschuldungsgrad": 0.85,
+      "sicherheitenBewertung": "MAENGELHAFT",
+      "zinssatzEmpfehlungBasispunkte": 150,
+      "maxKreditvolumenFaktor": 1.5,
+      "simulationsKonfidenz": "HOCH",
+      "bemerkung": "Hohes Risiko. Nur mit deutlichem Zinsaufschlag und ggf. weiteren Sicherheiten."
+    },
+    {
+      "antragsId": "antrag-008",
+      "risikoScoreGesamt": 320,
+      "risikoKategorie": "GERING",
+      "kapitaldienstfaehigkeitQuote": 0.55,
+      "verschuldungsgrad": 0.40,
+      "sicherheitenBewertung": "GUT",
+      "zinssatzEmpfehlungBasispunkte": 0,
+      "maxKreditvolumenFaktor": 4.0,
+      "simulationsKonfidenz": "HOCH",
+      "bemerkung": "Solides, risikoarmes Profil."
+    }
+  ]
+}
