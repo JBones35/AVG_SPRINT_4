@@ -1,0 +1,33 @@
+{
+  "kreditwuerdigkeitspruefungen": [
+    {
+      "antragsId": "antrag-001",
+      "kundeId": "kunde-123",
+      "kreditwuerdig": true,
+      "score": 780,
+      "bemerkung": "Gute Bonität, keine negativen Merkmale."
+    },
+    {
+      "antragsId": "antrag-002",
+      "kundeId": "kunde-456",
+      "kreditwuerdigkeit": false,
+      "score": 550,
+      "ablehnungsgrund": "NEGATIVE_SCHUFA_MERKMALE",
+      "bemerkung": "Einträge bei Kreditauskunftei."
+    },
+    {
+      "antragsId": "antrag-003",
+      "kundeId": "kunde-789",
+      "kreditwuerdig": null,
+      "systemStatus": "FEHLER_BEI_PRUEFUNG",
+      "bemerkung": "Technische Störung bei der automatischen Prüfung."
+    },
+    {
+      "antragsId": "antrag-004",
+      "kundeId": "kunde-101",
+      "kreditwuerdig": true,
+      "score": 690,
+      "bemerkung": "Bonität ausreichend."
+    }
+  ]
+}

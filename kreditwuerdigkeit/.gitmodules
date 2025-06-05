@@ -1,0 +1,3 @@
+[submodule "kreditwuerdigkeit"]
+	path = kreditwuerdigkeit
+	url = https://github.com/lwluc/slowed-down-json-server
