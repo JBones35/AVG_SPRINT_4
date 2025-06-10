@@ -10,10 +10,11 @@
     {
       "antragsId": "antrag-002",
       "kundeId": "kunde-456",
-      "kreditwuerdigkeit": false,
+      "kreditwuerdig": false,
       "score": 550,
       "ablehnungsgrund": "NEGATIVE_SCHUFA_MERKMALE",
-      "bemerkung": "Einträge bei Kreditauskunftei."
+      "bemerkung": "Einträge bei Kreditauskunftei.",
+      "absage_grund": "Schufa-Einträge negativ, daher Kredit abgelehnt."
     },
     {
       "antragsId": "antrag-003",
