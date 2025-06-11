@@ -5,6 +5,8 @@ import  { risikobewertungHandler } from './risikobewertungspruefung.js';
 import { absageErstellenHandler } from './absageErstellenHandler.js';
 import { kreditvertragErstellenHandler } from './kreditvertragErstellenHandler.js';
 import { mailSendenHandler } from './mailSendenHandler.js';
+import { mailFürAnforderungenSendenHandler } from './mailFürAnforderungenSendenHandler.js';
+import { stornierungsMailSendenHandler } from './stornierungsMailSendenHandler.js';
 
 const { ZEEBE_ADDRESS, ZEEBE_CLIENT_ID, ZEEBE_CLIENT_SECRET } = process.env;
 
@@ -32,6 +34,8 @@ const workersToCreate = [
     { taskType: 'absage-erstellen-automatisiert', handler: absageErstellenHandler },
     { taskType: 'kreditvertrag-erstellen-automatisiert', handler: kreditvertragErstellenHandler },
     { taskType: 'mail-senden-automatisiert', handler: mailSendenHandler },
+    { taskType: 'mail-fuer-anforderungen-senden-automatisiert', handler: mailFürAnforderungenSendenHandler },
+    { taskType: 'stornierungs-mail-senden-automatisiert', handler: stornierungsMailSendenHandler }
 ];
 
 workersToCreate.forEach(workerConfig => {

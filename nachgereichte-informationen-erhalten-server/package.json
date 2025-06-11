@@ -1,20 +1,19 @@
 {
-  "name": "Camunda-Worker",
+  "name": "nachgereichte-informationen-erhalten-server",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "Jonas Kirschner",
-  "main": "src/worker.js",
   "type": "module",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/worker.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "axios": "^1.9.0",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "nodemailer": "^7.0.3",
-    "puppeteer": "^24.10.0",
     "zeebe-node": "^8.3.2"
   }
 }

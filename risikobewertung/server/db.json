@@ -13,7 +13,7 @@
       "bemerkung": "Exzellentes Risikoprofil, Top-Konditionen möglich."
     },
     {
-      "antragsId": "antrag-004",
+      "antragsId": "antrag-002",
       "risikoScoreGesamt": 550,
       "risikoKategorie": "MITTEL",
       "kapitaldienstfaehigkeitQuote": 0.40,
@@ -25,7 +25,7 @@
       "bemerkung": "Standardrisiko, Konditionen im mittleren Bereich."
     },
     {
-      "antragsId": "antrag-007",
+      "antragsId": "antrag-003",
       "risikoScoreGesamt": 780,
       "risikoKategorie": "HOCH",
       "kapitaldienstfaehigkeitQuote": 0.25,
@@ -37,7 +37,7 @@
       "bemerkung": "Hohes Risiko. Nur mit deutlichem Zinsaufschlag und ggf. weiteren Sicherheiten."
     },
     {
-      "antragsId": "antrag-008",
+      "antragsId": "antrag-004",
       "risikoScoreGesamt": 320,
       "risikoKategorie": "GERING",
       "kapitaldienstfaehigkeitQuote": 0.55,

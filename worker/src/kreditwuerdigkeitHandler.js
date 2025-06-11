@@ -17,6 +17,10 @@ export const kreditwuerdigkeitHandler = async (job) => {
         const response = await axios.get(`http://localhost:3000/kreditwuerdigkeitspruefungen?antragsId=${antragsId}&kundenId=${kundenId}`);
         const daten = response.data[0];
         if(daten) {
+            if (daten.systemStatus === 'FEHLER_BEI_PRUEFUNG') {
+                job.error(`System nicht erreichbar für AntragsId: ${antragsId}, KundenId: ${kundenId}`, 0);
+                return;
+            }
             console.log(`Daten erhalten: ${JSON.stringify(daten)}`);
             job.complete({
                 antragsId: antragsId,

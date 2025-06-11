@@ -5,7 +5,7 @@ import { promises as fs } from 'fs';
 const GMAIL_ADDRESS = process.env.GMAIL_ADDRESS;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 
-const transporter = nodemailer.createTransport({
+export const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
