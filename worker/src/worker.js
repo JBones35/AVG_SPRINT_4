@@ -1,10 +1,12 @@
+import 'dotenv/config';
 import { ZBClient } from 'zeebe-node';
 import  { kreditwuerdigkeitHandler } from './kreditwuerdigkeitHandler.js';
 import  { risikobewertungHandler } from './risikobewertungspruefung.js';
+import { absageErstellenHandler } from './absageErstellenHandler.js';
+import { kreditvertragErstellenHandler } from './kreditvertragErstellenHandler.js';
+import { mailSendenHandler } from './mailSendenHandler.js';
 
-const ZEEBE_ADDRESS='487e2664-45fe-4a21-9e53-860eddc37e5e.bru-2.zeebe.camunda.io:443';
-const ZEEBE_CLIENT_ID='gMVS3RIcDByvRZQAq9SAVG.TPSN2Z.xH'
-const ZEEBE_CLIENT_SECRET='5YStz7R99gYqn9iJh1qMGB03ywxGTyXP6ZWC1ppIZh_ieqkQzNj0CEEdTwSqup8T'
+const { ZEEBE_ADDRESS, ZEEBE_CLIENT_ID, ZEEBE_CLIENT_SECRET } = process.env;
 
 const zbClient = new ZBClient({
     camundaCloud: {
@@ -15,22 +17,31 @@ const zbClient = new ZBClient({
     retry: true,
     maxRetries: 3,
     maxRetryTimeout: 30000,
+    grpc: {
+    'grpc.keepalive_time_ms': 10000,
+    'grpc.keepalive_permit_without_calls': 1,
+    'grpc.keepalive_timeout_ms': 5000,
+    'grpc.http2.min_time_between_pings_ms': 10000,
+    'grpc.http2.max_pings_without_data': 0,
+    }
 });
 
-zbClient.createWorker({
-    taskType: 'kreditwuerdigkeitspruefung-automatisiert',
-    taskHandler: kreditwuerdigkeitHandler,
-    timeout: 30000,
-    onReady: () => console.log(`Worker für 'kreditwuerdigkeitspruefung-automatisiert' bereit`),
-    onConnectionError: () => console.error(`Worker für 'kreditwuerdigkeitspruefung-automatisiert' konnte keine Verbindung herstellen`),
-});
+const workersToCreate = [
+    { taskType: 'kreditwuerdigkeitspruefung-automatisiert', handler: kreditwuerdigkeitHandler },
+    { taskType: 'risikobewertungspruefung-automatisiert', handler: risikobewertungHandler },
+    { taskType: 'absage-erstellen-automatisiert', handler: absageErstellenHandler },
+    { taskType: 'kreditvertrag-erstellen-automatisiert', handler: kreditvertragErstellenHandler },
+    { taskType: 'mail-senden-automatisiert', handler: mailSendenHandler },
+];
 
-zbClient.createWorker({
-    taskType: 'risikobewertungspruefung-automatisiert',
-    taskHandler: risikobewertungHandler,
-    timeout: 30000,
-    onReady: () => console.log(`Worker für 'risikobewertungspruefung-automatisiert' bereit`),
-    onConnectionError: () => console.error(`Worker für 'risikobewertungspruefung-automatisiert' konnte keine Verbindung herstellen`),
+workersToCreate.forEach(workerConfig => {
+    zbClient.createWorker({
+        taskType: workerConfig.taskType,
+        taskHandler: workerConfig.handler,
+        timeout: 30000,
+        onReady: () => console.log(`Worker für '${workerConfig.taskType}' bereit`),
+        onConnectionError: () => console.error(`Worker für '${workerConfig.taskType}' konnte keine Verbindung herstellen`),
+    });
 });
 
 console.log('Worker wird gestartet...');

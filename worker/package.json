@@ -1,5 +1,5 @@
 {
-  "name": "kreditwuerdigkeitspruefung-automatisiert",
+  "name": "Camunda Worker",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -7,11 +7,14 @@
   "main": "src/worker.js",
   "type": "module",
   "scripts": {
-    "start" : "node src/worker.js",
+    "start": "node src/worker.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "nodemailer": "^7.0.3",
+    "puppeteer": "^24.10.0",
     "zeebe-node": "^8.3.2"
   }
 }
