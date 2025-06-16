@@ -21,7 +21,8 @@ export const kreditvertragErstellenHandler = async (job) => {
 
         const name = `${vorname} ${nachname}`;
         const zinssatz = zinskalkulationOutput.berechneterZinssatz;
-        const monatlicheRate = (kreditbetrag / (zinssatz / 100)) / laufzeit;
+        const monatlicheRate = berechneMonatlicheRate(kreditbetrag, zinssatz, laufzeit);
+        console.log(`Erstelle Kreditvertrag für AntragsId: ${antragsId}, Kunde: ${name}, Kreditbetrag: ${kreditbetrag}, Zinssatz: ${zinssatz}, Laufzeit: ${laufzeit} Monate, Monatliche Rate: ${monatlicheRate}`);
 
         const htmlContent = `
 <!DOCTYPE html>
@@ -77,10 +78,10 @@ export const kreditvertragErstellenHandler = async (job) => {
                     <tr><th colspan="2">Zentrale Kreditkonditionen</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Nettodarlehensbetrag</td><td>${kreditbetrag.toFixed(2)} €</td></tr>
-                    <tr><td>Sollzinssatz (p.a., gebunden)</td><td>${zinssatz.toFixed(2)} %</td></tr>
+                    <tr><td>Nettodarlehensbetrag</td><td>${Number(kreditbetrag).toFixed(2)} €</td></tr>
+                    <tr><td>Sollzinssatz (p.a., gebunden)</td><td>${Number(zinssatz).toFixed(2)} %</td></tr>
                     <tr><td>Laufzeit</td><td>${laufzeit} Monate</td></tr>
-                    <tr><td>Monatliche Rate</td><td>${monatlicheRate.toFixed(2)} €</td></tr>
+                    <tr><td>Monatliche Rate</td><td>${Number(monatlicheRate).toFixed(2)} €</td></tr>
                 </tbody>
             </table>
 
@@ -148,3 +149,14 @@ const createPDF = async (htmlContent, antragsId) => {
         await browser.close();
     }
 };
+
+const berechneMonatlicheRate = (kreditbetrag, zinssatz, laufzeit) => {
+    const monatlicherZins = zinssatz / 100 / 12;
+    if(monatlicherZins === 0) {
+        return kreditbetrag / laufzeit;
+    }
+
+    const zinsFaktor = Math.pow(1 + monatlicherZins, laufzeit);
+    const monatlicheRate = (kreditbetrag *(( monatlicherZins * zinsFaktor)) / (zinsFaktor - 1));
+    return monatlicheRate;
+}
