@@ -8,6 +8,7 @@ import { mailSendenHandler } from './mailSendenHandler.js';
 import { mailFürAnforderungenSendenHandler } from './mailFürAnforderungenSendenHandler.js';
 import { stornierungsMailSendenHandler } from './stornierungsMailSendenHandler.js';
 import { prozessStartZeitSetzenHandler } from './prozessstartzeizSetzenHandler.js';
+import { variablenExtrahierenHandler } from './variablenExtrahierenHandler.js';
 
 const { ZEEBE_ADDRESS, ZEEBE_CLIENT_ID, ZEEBE_CLIENT_SECRET } = process.env;
 
@@ -37,7 +38,8 @@ const workersToCreate = [
     { taskType: 'mail-senden-automatisiert', handler: mailSendenHandler },
     { taskType: 'mail-fuer-anforderungen-senden-automatisiert', handler: mailFürAnforderungenSendenHandler },
     { taskType: 'stornierungs-mail-senden-automatisiert', handler: stornierungsMailSendenHandler },
-    { taskType: 'prozess-start-zeit-setzen', handler: prozessStartZeitSetzenHandler }
+    { taskType: 'prozess-start-zeit-setzen', handler: prozessStartZeitSetzenHandler },
+    { taskType: 'variablen-extrahieren-automatisiert', handler: variablenExtrahierenHandler }
 ];
 
 workersToCreate.forEach(workerConfig => {
